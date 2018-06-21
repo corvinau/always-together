@@ -1,0 +1,104 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09/06/2018, 18:23:27
+    Author     : Tatiane
+*/
+#about {
+    margin-bottom: 5%;
+}
+
+.w3l_agileits_breadcrumbs_inner {
+    float: right;
+}
+
+.footer{
+    position: inherit;
+    bottom: 0;
+    width: 100%;
+}
+
+.login-center-info .sim-button {
+    margin-top: 0em!important;
+    background: rgb(65, 131, 154)!important;
+    width: 25%!important;
+}
+
+#horaMin, #horaMax {
+    width: 45px;
+    padding: 0 0px 0px 10px;
+    margin-left: 10px;
+}
+
+.diaSemana {
+    margin-left: 215px;
+    margin-bottom: 20px;
+}
+
+.horaMin, .horaMax {
+    margin-left: 18px;
+    margin-top: 10px;
+    height: 25px;
+}
+
+.fa {
+    margin-left: 12px;
+    font-size: medium;
+}
+
+.table {
+    margin-bottom: 5%;
+}
+
+.alert-info {
+    margin-top: 40px;
+}
+
+.list-festa-convida input[type="submit"] {
+    outline: none;
+    padding: 10px 0;
+    font-size: 1em;
+    color: #fff;
+    border: none;
+    background: rgb(65, 131, 154);
+    text-transform: uppercase;
+    width: 16.9%;
+    float: right;
+    margin-right: auto;
+    margin-left: auto;
+    height: 50px;
+    margin-bottom: 25px;
+}
+
+.list-festa-convida input[type="submit"]:hover {
+    background: #44c7f4;
+}
+
+.well {
+    margin: 0px 20px;
+    width: inherit;
+}
+
+h4 {
+    text-align: center !important;
+}
+
+.pWell {
+    color: #000!important;
+    text-align: center;
+}
+
+.dropdown-menu {
+    width: max-content;
+    min-width: 540px;
+    overflow: auto;
+    /*min-height: 390px;*/
+    height: max-content;
+}
+
+td a i.fa {
+    color: rgb(65, 131, 154);
+}
