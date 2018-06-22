@@ -53,7 +53,7 @@
                             <td>${funcionario.cargo}</td>
                             <td>${funcionario.dataNasc}</td>
                             <td style="width: 125px;">
-                                <a href="FuncionarioServlet?action=show&id=${funcionario.idFuncionario}">
+                                <a href="#" data-toggle="modal" data-target="#exampleModal${funcionario.idFuncionario}">
                                     <i class="fa fa-eye"></i>
                                 </a>
                                 <a href="#">
@@ -64,6 +64,7 @@
                                 </a>
                             </td>
                         </tr>
+                    <%@include file="modal.jsp"%>
                     </c:forEach>
                 </tbody>
             </table>
