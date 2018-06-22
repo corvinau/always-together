@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.apache.tomcat.jni.Local;
 
 /**
  *
@@ -57,7 +56,6 @@ public class FuncionarioServlet extends HttpServlet {
         }
         if(action != null){
             Funcionario f;
-            Local l;
             switch (action){
                 case "cadastroFuncionario":
                     f = getPostFuncionario(request);
