@@ -38,19 +38,19 @@
             <div class="grid_3 grid_5 wow fadeInUp animated" data-wow-delay=".5s" style="width: 100%; display: inline-flex; margin-bottom: inherit;">
                 <div class="well">
                     <h4 id="h4.-bootstrap-heading">
-                        Encontros totais efetivados
+                        Orçamentos totais efetivados
                     </h4>
                     <p class="pWell">45</p>
                 </div>
                 <div class="well">
                     <h4 id="h4.-bootstrap-heading">
-                        Encontros totais pendentes
+                        Orçamentos totais pendentes
                     </h4>
                     <p class="pWell">23</p>
                 </div>
                 <div class="well">
                     <h4 id="h4.-bootstrap-heading">
-                        Encontros totais solicitados
+                        Orçamentos totais solicitados
                     </h4>
                     <p class="pWell">69</p>
                 </div>

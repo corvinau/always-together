@@ -25,8 +25,8 @@ import javax.ws.rs.core.Response;
  *
  * @author ArtVin
  */
-@Path("AJAX")
-public class AJAXResource {
+@Path("Ajax")
+public class AjaxService {
 
     @Context
     private UriInfo context;
@@ -34,7 +34,7 @@ public class AJAXResource {
     /**
      * Creates a new instance of AJAXResource
      */
-    public AJAXResource() {
+    public AjaxService() {
     }
 
     @GET

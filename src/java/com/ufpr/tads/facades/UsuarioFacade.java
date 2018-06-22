@@ -132,6 +132,18 @@ public class UsuarioFacade {
         else
             return false;
     }
-  
 
+    public static Funcionario getFuncionario(int idFuncionario) {
+        Usuario u = new Usuario();
+        u.setIdUsuario(idFuncionario);
+        return new FuncionarioDAO().getFuncionario(u);
+    }
+
+    public static void updateFuncionario(Funcionario f) {
+        new FuncionarioDAO().updateFuncionario(f);
+    }
+
+    public static void removeFuncionario(int idFuncionario) {
+        new FuncionarioDAO().removeFuncionario(idFuncionario);
+    }
 }

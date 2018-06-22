@@ -10,6 +10,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+        function confirmar(link, id) {
+            if (confirm("Deseja remover esse cliente?")) {
+                 link.href = "FuncionarioServlet?action=removeFuncionario&id="+id;
+             }
+        }    
+        </script>
         <title>Always Together</title>
     </head>
     <body>
@@ -56,10 +63,10 @@
                                 <a href="#" data-toggle="modal" data-target="#exampleModal${funcionario.idFuncionario}">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a href="#">
+                                <a href="FuncionarioServlet?action=formUpdateFuncionario&id=<c:out value="${funcionario.idFuncionario}" />">
                                     <i class="fa fa-pencil"></i>
                                 </a>
-                                <a href="#">
+                                <a href="" onclick="confirmar(this,<c:out value="${funcionario.idFuncionario}" />">
                                     <i class="fa fa-times"></i>
                                 </a>
                             </td>

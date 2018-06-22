@@ -28,7 +28,7 @@
             function getCidades(preencherPrimeiroForm){
                 preencherPrimeiroForm = false;
                 var estadoId = $("#uf").val();//Apenas em dev
-                var url = "http://localhost:34235/AlwaysTogether/webresources/Ajax/cidade/"+estadoId;
+                var url = "http://localhost:28313/AlwaysTogether/webresources/Ajax/cidade/"+estadoId;
                 $.ajax({
                     type : "GET",
                     url : url, // URL da sua Servlet
@@ -70,34 +70,45 @@
         <div class="login elite-app">
             <div class="container">
                 <div class="tittle-agileinfo">
-                    <h3>Cadastrar Funcionário</h3>
+                    <c:choose>
+                        <c:when test="${alterar}">
+                    <h3>Alterar funcionário</h3>
+                </div>
+                <div class="col-md-12 login-form-w3-agile">
+                    <form action="FuncionarioServlet?action=updateFuncionario" method="POST">
+                            
+                        </c:when>
+                        <c:otherwise>
+                    <h3>Cadastrar funcionário</h3>
                 </div>
                 <div class="col-md-12 login-form-w3-agile">
                     <form action="FuncionarioServlet?action=cadastroFuncionario" method="POST">
-                    
+                            
+                        </c:otherwise>
+                    </c:choose>
                         <div class="w3_form_body_grid">
                             <span>E-mail</span>
-                            <input type="text" name="email" value="" placeholder="Email" required/>
+                            <input type="text" name="email" value="<c:out value="${funcionario.email}" />" placeholder="Email" required/>
                         </div>
 
                         <div class="w3_form_body_grid">
                             <span>Nome*</span>
-                            <input type="text" name="nome" value="" placeholder="Nome" required/>
+                            <input type="text" name="nome" value="<c:out value="${funcionario.nome}" />" placeholder="Nome" required/>
                         </div>
 
                         <div class="w3_form_body_grid">
                             <span>Cargo*</span>
-                            <input type="text" name="cargo" value="" placeholder="Cargo" required/>
+                            <input type="text" name="cargo" value="<c:out value="${funcionario.cargo}" />" placeholder="Cargo" required/>
                         </div>
 
                         <div class="w3_form_body_grid">
                             <span>CPF*</span>
-                            <input type="text" name="cpf" value="" placeholder="CPF" required/>
+                            <input type="text" name="cpf" value="<c:out value="${funcionario.cpf}" />" placeholder="CPF" required/>
                         </div>
 
                         <div class="w3_form_body_grid w3_form_body_grid1">
                             <span>Data de Nascimento*</span>
-                            <input id="datepicker" name="dataNascimento" type="text" placeholder="dd/mm/yyyy" value="" required>
+                            <input id="datepicker" name="dataNascimento" type="text" placeholder="dd/mm/yyyy" value="<fmt:formatDate value="${funcionario.dataNasc}" pattern="dd/mm/yyyy" />" required>
                         </div>
 
                         <div class="w3_form_body_grid">
@@ -125,24 +136,31 @@
                         
                         <div class="w3_form_body_grid">
                             <span>Bairro*</span>
-                            <input type="text" name="bairro" value="" placeholder="Bairro" required/>
+                            <input type="text" name="bairro" value="<c:out value="${funcionario.endereco.bairro}" />" placeholder="Bairro" required/>
                         </div>
                         
                         <div class="w3_form_body_grid">
                             <span>Rua*</span>
-                            <input type="text" name="rua" value="" placeholder="Rua" required/>
+                            <input type="text" name="rua" value="<c:out value="${funcionario.endereco.rua}" />" placeholder="Rua" required/>
                         </div>
                         
                         <div class="w3_form_body_grid">
                             <span>Número*</span>
-                            <input type="text" name="numero" value="" placeholder="Número" required/>
+                            <input type="text" name="numero" value="<c:out value="${funcionario.endereco.numero}" />" placeholder="Número" required/>
                         </div>
                         
                         <div class="w3_form_body_grid">
                             <span>Complemento</span>
-                            <input type="text" name="complemento" value="" placeholder="Complemento"/>
+                            <input type="text" name="complemento" value="<c:out value="${funcionario.endereco.complemento}" />" placeholder="Complemento"/>
                         </div>
-                        <input type="submit" value="Cadastrar">
+                            <c:choose>
+	                        <c:when test="${alterar}">
+	                            <input type="submit" value="Atualizar">
+	                        </c:when>
+                                <c:otherwise>
+	                            <input type="submit" value="Cadastrar">
+	                        </c:otherwise>
+	                    </c:choose>
                     </form>
                 </div>
             </div>

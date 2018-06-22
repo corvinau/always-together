@@ -71,7 +71,22 @@ public class FuncionarioServlet extends HttpServlet {
                 case "listaFuncionarios":
                     request.setAttribute("listaFuncionarios", UsuarioFacade.getListaFuncionario());
                     rd = getServletContext().getRequestDispatcher("/funcionarioListar.jsp");
-                    break;     
+                    break;
+                case "formUpdateFuncionario":
+                    request.setAttribute("funcionario", UsuarioFacade.getFuncionario(Integer.parseInt(request.getParameter("id"))));
+                    request.setAttribute("estados", UsuarioFacade.getEstados());
+                    request.setAttribute("alterar", true);
+                    rd = getServletContext().getRequestDispatcher("/funcionarioForm.jsp");
+                    break;
+                case "updateFuncionario":
+                    f = getPostFuncionario(request);
+                    UsuarioFacade.updateFuncionario(f);
+                    rd = getServletContext().getRequestDispatcher("/FuncionarioServlet?action=listaFuncionarios");
+                    break;
+                case "removeFuncionario":
+                    UsuarioFacade.removeFuncionario(Integer.parseInt(request.getParameter("id")));
+                    rd = getServletContext().getRequestDispatcher("/FuncionarioServlet?action=listaFuncionarios");
+                    break;
                 default :
                     rd = getServletContext().getRequestDispatcher("/portal.jsp");
                     break;
@@ -90,7 +105,7 @@ public class FuncionarioServlet extends HttpServlet {
         f.setEmail((String)request.getParameter("email"));
         f.setNome((String) request.getParameter("nome"));
         f.setCargo((String) request.getParameter("cargo"));
-        f.setCpf((String) request.getParameter("cpf"));
+        f.setCpf((String) request.getParameter("cpf").replace(".", "-"));
         aux = (String) request.getParameter("dataNascimento");
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         try {

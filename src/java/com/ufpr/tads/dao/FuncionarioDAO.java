@@ -54,7 +54,7 @@ public class FuncionarioDAO {
             while(rs.next()){
                 f = new Funcionario();
                 f.setIdUsuario(u.getIdUsuario());
-                f.setEmail(u.getEmail());
+                f.setEmail(getEmailFuncionario(u.getIdUsuario()));
                 f.setIdFuncionario(rs.getInt("idFuncionario"));
                 f.setNome(rs.getString("nome"));
                 f.setCargo(rs.getString("cargo"));
@@ -190,5 +190,60 @@ public class FuncionarioDAO {
         
         
         return lista;
+    }
+
+    private String getEmailFuncionario(int idUsuario) {
+        PreparedStatement st;
+        ResultSet res;
+        String email = null;
+        try {
+            st = con.prepareStatement("SELECT EMAIL FROM USUARIO WHERE IDUSUARIO = ?;");
+                st.setInt(1, idUsuario);
+                res = st.executeQuery();
+            while(res.next()){
+                email = res.getString(1);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+        return email;
+    }
+
+    public void removeFuncionario(int idFuncionario) {
+        PreparedStatement st;
+        try {
+            st = con.prepareStatement("DELETE FROM USUARIO WHERE IDUSUARIO = ?;");
+                st.setInt(1, getIdUsuario(idFuncionario));
+                st.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            st = con.prepareStatement("DELETE FROM funcionario WHERE idFuncionario = ?;");
+                st.setInt(1, idFuncionario);
+                st.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private int getIdUsuario(int idFuncionario) {
+        PreparedStatement st;
+        ResultSet res;
+        int idUsuario = 0;
+        try {
+            st = con.prepareStatement("SELECT Usuario_idUsuario FROM funcionario WHERE idFuncionario = ?;");
+                st.setInt(1, idFuncionario);
+                res = st.executeQuery();
+            while(res.next()){
+                idUsuario = res.getInt(1);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+        return idUsuario;
     }
 }
